@@ -1,0 +1,47 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+index:
+    path: /
+    controller: App\Controller\BlogController::index
+
+categories:
+    path: /categories
+    controller: App\Controller\CategoryController::showCategories
+
+createCategory:
+    path: /categories/createCategory
+    controller: App\Controller\CategoryController::createCategory
+
+removeCategory:
+    path: /categories/removeCategory/{categoryId}
+    controller: App\Controller\CategoryController::removeCategory
+    requirements:
+        id: '\d+'
+
+articles:
+    path: /articles
+    controller: App\Controller\ArticleController::showArticles
+
+createArticle:
+    path: /article/createArticle
+    controller: App\Controller\ArticleController::createArticle
+
+removeArticle:
+    path: /article/removeArticle/{articleId}
+    controller: App\Controller\ArticleController::removeArticle
+    requirements:
+        id: '\d+'
+
+updateArticle:
+    path: /article/updateArticle/{articleId}
+    controller: App\Controller\ArticleController::updateArticle
+    requirements:
+        id: '\d+'
+
+publishArticle:
+    path: /article/publishArticle/{articleId}
+    controller: App\Controller\ArticleController::publishArticle
+    requirements:
+        id: '\d+'

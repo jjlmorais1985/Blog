@@ -1,0 +1,57 @@
+{%  extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">Article</h1>
+    <div class="col-12 d-flex justify-content-center">
+        <div class="col-8 ">
+            <div class="">
+                <div class="p-5 ">
+                    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-evenly mt-3">
+        <a href="{{ path('index') }}" class="text-decoration-none">
+            <i class="fas fa-chevron-left"></i> <span class="mx-2">Accueil</span>
+        </a>
+        <a href="{{ path('articles') }}" class="text-decoration-none">Articles</a>
+    </div>
+{#    <div>#}
+{#        <h1>Article</h1>#}
+{#        <form>#}
+{#            <div class="input-field col s12 m6">#}
+{#                <select class="browser-default col s12 m6" multiple name="categories" id="categories">#}
+{#                    <option value="" disabled selected>Chosissez une ou plusieur catégories</option>#}
+{#                    {% for category in categories %}#}
+{#                        <option value="{{ category.id }}">{{ category.category }}</option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#            </div>#}
+{#            <div class="input-field col s12 m6">#}
+{#                <label>#}
+{#                    <input type="checkbox"/>#}
+{#                    <span>Publier</span>#}
+{#                </label>#}
+{#            </div>#}
+{#            <div class="input-field col s12 m6">#}
+{#                <button type="submit" class="btn btn-success"></button>#}
+{#                <button type="reset" class="btn btn-danger"></button>#}
+{#            </div>#}
+{#        </form>#}
+
+
+{#    </div>#}
+{#    {% block javascripts %}#}
+{#        <script>#}
+{#            document.addEventListener('DOMContentLoaded', function() {#}
+{#                let elems = document.querySelectorAll('select');#}
+{#                let instances = M.FormSelect.init(elems, options);#}
+{#            });#}
+{#        </script>#}
+{#    {% endblock %}#}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Modification de l'article {{ article.title }}{% endblock %}
+
+{% block body %}
+    <h1>Article {{ article.title }} </h1>
+    <div>
+
+    </div>
+{#    <div>#}
+{#        <form action="{{ path('updateArticle', {'articleId': article.id}) }}" method="post">#}
+{#            <div class="input-group mb-3">#}
+{#                <span class="input-group-text" id="basic-addon1">Titre</span>#}
+{#                <input type="text" class="form-control" name="title" placeholder="{{ article.title }}" aria-label="title" aria-describedby="basic-addon1">#}
+{#            </div>#}
+
+{#            <div class="input-group mb-3">#}
+{#                <div class="input-group mb-3">#}
+{#                    <img src="/uploads/article_images/{{ article.image }}" class="img-thumbnail col-6" alt="{{ article.image }}">#}
+{#                    <span class="input-group-text" id="basic-addon2">Image</span>#}
+{#                </div>#}
+{#                <input type="file" class="form-control" name="image" aria-label="image" aria-describedby="basic-addon2" value="{{ article.image }}">#}
+{#                <span class="input-group-text" id="basic-addon2">Image</span>#}
+{#            </div>#}
+
+{#            <label for="basic-url" class="form-label">Catégories</label>#}
+{#            <div class="input-group mb-3">#}
+{#                <span class="input-group-text" id="basic-addon3"></span>#}
+{#                <select class="form-select" size="3" aria-label="categories">#}
+{#                    {% for category in article.categories %}#}
+{#                        <option value="{{ category.id }}">{{ category.category }}</option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#            </div>#}
+
+{#            <div class="input-group">#}
+{#                <span class="input-group-text">Contenu</span>#}
+{#                <textarea class="form-control" aria-label="With textarea">#}
+{#                    {{ article.content }}#}
+{#                </textarea>#}
+{#            </div>#}
+
+{#            <div class="input-group mb-3">#}
+{#                {% if article.publish %}#}
+{#                    <input class="form-check-input" type="checkbox" value="" id="publish" checked>#}
+{#                {% else %}#}
+{#                    <input class="form-check-input" type="checkbox" value="" id="publish" >#}
+{#                {% endif %}#}
+{#                <label class="form-check-label" for="publish">#}
+{#                    Publier#}
+{#                </label>#}
+{#            </div>#}
+
+{#            <div class="input-group mb-3 d-flex justify-content-around">#}
+{#                <button type="submit" class="btn btn-primary">Mettre à jour</button>#}
+{#                <button type="reset" class="btn btn-danger">Effacer</button>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#    <div class="col-12 d-flex justify-content-evenly">#}
+{#        <a href="{{ path('index') }}" class="text-decoration-none">#}
+{#            <i class="fas fa-chevron-left"></i> <span class="mx-2">Accueil</span>#}
+{#        </a>#}
+{#        <a href="{{ path('articles') }}" class="text-decoration-none">Revenir aux articles</a>#}
+{#    </div>#}
+{#    #}
+{% endblock %}
