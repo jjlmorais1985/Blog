@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Escpace utilisateur {% endblock %}
+
+{% block body %}
+    <h1 class="m-5 text-center">Espace utilisateur</h1>
+    <div class="row">
+        <div class="col-sm-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Articles</h5>
+                    <p class="card-text">Affichage, Création, supression et modification d'Articles.</p>
+                    <a href="{{ path('articles') }}" class="btn btn-primary">Aller</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Catégories</h5>
+                    <p class="card-text">Affichage, Création et suppression des Catégories.</p>
+                    <a href="{{ path('categories') }}" class="btn btn-primary">Aller</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-auto">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Utilisateurs</h5>
+                    <p class="card-text">Affichage, Création et suppression d'Utilisateur.</p>
+                    <a href="{{ path('showUsers', {'orderBy': 'ASC'}) }}" class="btn btn-primary">Aller</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mt-5 d-flex justify-content-around">
+        <a href="{{ path('app_logout') }}" class="col-3 btn btn-warning orange-800">Se déconnecter</a>
+    </div>
+{% endblock %}

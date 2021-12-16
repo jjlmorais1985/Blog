@@ -20,25 +20,6 @@
 
     {% else %}
         <h1 class="col-12 text-center">Aucun article publié</h1>
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Articles</h5>
-                        <p class="card-text">Affichage, Création, supression et modification d'Articles.</p>
-                        <a href="{{ path('articles') }}" class="btn btn-primary">Aller</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Catégories</h5>
-                        <p class="card-text">Affichage, Création et suppression des Catégories.</p>
-                        <a href="{{ path('categories') }}" class="btn btn-primary">Aller</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     {% endif %}
 {% endblock %}

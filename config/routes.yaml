@@ -45,3 +45,11 @@ publishArticle:
     controller: App\Controller\ArticleController::publishArticle
     requirements:
         id: '\d+'
+
+spaceAdmin:
+    path: /spaceAdmin
+    controller: App\Controller\AdminController::spaceAdmin
+
+showUsers:
+    path: /spaceAdmin/showUsers/{orderBy}
+    controller: App\Controller\AdminController::showUsers

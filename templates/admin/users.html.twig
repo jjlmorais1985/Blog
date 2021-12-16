@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent()}} | Utlisateurs{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="container mt-5">
+    <h1 class="col-12 text-center">Utilisateurs</h1>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nom d'utilisateur</th>
+            <th>E-mail</th>
+            <th>Permissions</th>
+            <th>
+                Date d'inscription 
+                {% if orderBy == 'ASC' %}                
+                    <a class="primary" href="{{ path('showUsers', {'orderBy':'ASC'}) }}"><i class="fas fa-angle-up"></i></a>
+                {% else %}        
+                    <a class="primary" href="{{ path('showUsers', {'orderBy':'DESC'}) }}"><i class="fas fa-angle-down"></i></a>
+                {% endif %}
+            </th>
+        </tr>
+        </thead>
+
+        <tbody class="">
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% for role in user.roles %}
+                        {{ role }}
+                    {% endfor %}
+                </td>
+                <td>{{ user.dateInscription|format_datetime() }}</td>
+                </td>
+                <td>
+                    <a class="text-primary" href="#">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                </td>
+                <td>
+                    <a class="text-danger" href="#">
+                        <i class="far fa-minus-square"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+
+    </div>
+    <div class="col-12 d-flex justify-content-evenly">
+        <a href="{{ path('index') }}" class="text-decoration-none">
+            <i class="fas fa-chevron-left"></i> <span class="mx-2">Accueil</span>
+        </a>
+        <a href="{{ path('spaceAdmin') }}" class="text-decoration-none">Espace Utilisateur</a>
+    </div>
+</div>
+{% endblock %}

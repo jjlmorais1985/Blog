@@ -21,6 +21,9 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ path('app_login') }}">Se Connecter</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="{{ path('articles') }}">Articles</a>
                     </li>
                     <li class="nav-item">
@@ -34,6 +37,13 @@
     <div class="container pt-5">
         <!-- Flashes -->
         <div class="col-12 text-center">
+            
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-warning " role="alert">
+                    <h6 class="">{{ message }}</h6>
+                </div>
+            {% endfor %}
+
             {% for message in app.flashes('warning') %}
                 <div class="alert alert-warning " role="alert">
                     <h6 class="">{{ message }}</h6>

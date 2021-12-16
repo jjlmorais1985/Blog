@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Créer Utilisateur {% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Register</h1>
+    <div class="form-control">
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.username) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+            
+            <div class="col-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
