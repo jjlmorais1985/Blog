@@ -53,3 +53,7 @@ spaceAdmin:
 showUsers:
     path: /spaceAdmin/showUsers/{orderBy}
     controller: App\Controller\AdminController::showUsers
+
+delUsers:
+    path: /spaceAdmin/delUsers/{id}
+    controller: App\Controller\AdminController::delUsers

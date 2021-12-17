@@ -17,6 +17,7 @@ class AdminController extends AbstractController
 
     public function showUsers(EntityManagerInterface $em, $orderBy = "ASC")
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $users = $em->getRepository(User::class)->findBy(
             [],
             ['dateInscription' => $orderBy]
@@ -35,5 +36,27 @@ class AdminController extends AbstractController
             $orderBy = 'ASC';
 
         return $this->render('admin/users.html.twig', ['users' => $users, 'orderBy' => $orderBy]);
+    }
+
+    public function delUsers(EntityManagerInterface $em, $id)
+    {
+        $user = $em->getRepository(User::class)->find($id);
+        
+        if (!empty($user)) {
+            $username = $user->getUsername();
+            $em->remove($user);
+            $em->flush();
+            $this->addFlash(
+               "success",
+               "Utilisateur \" $id : $username\" supprimé"
+            );
+
+        } else {
+            $this->addFlash(
+            'warning',
+            "Impossible de supprimer l'utilisareur"
+            );
+        }
+        return $this->redirectToRoute('showUsers', ["orderBy" => "ASC"]);
     }
 }
