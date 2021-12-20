@@ -57,3 +57,11 @@ showUsers:
 delUsers:
     path: /spaceAdmin/delUsers/{id}
     controller: App\Controller\AdminController::delUsers
+    requirements:
+        id: '\d+'
+
+setAdmin:
+    path: /spaceAdmin/setAdmin/{id}
+    controller: App\Controller\AdminController::setAdmin
+    requirements:
+        id: '\d+'

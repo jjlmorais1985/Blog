@@ -6,7 +6,8 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class AdminController extends AbstractController
 {
@@ -17,7 +18,17 @@ class AdminController extends AbstractController
 
     public function showUsers(EntityManagerInterface $em, $orderBy = "ASC")
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+               'warning',
+               'Accès Refusé - Vous devez etre administrateur pour voir la page demandé'
+            );
+            return $this->render('admin/index.html.twig');
+        }
+        
+
         $users = $em->getRepository(User::class)->findBy(
             [],
             ['dateInscription' => $orderBy]
@@ -58,5 +69,27 @@ class AdminController extends AbstractController
             );
         }
         return $this->redirectToRoute('showUsers', ["orderBy" => "ASC"]);
+    }
+
+    public function setAdmin(EntityManagerInterface $em, $id) {
+
+        $user = $em->getRepository(User::class)->find($id);
+
+        if (in_array("ROLE_ADMIN", $user->getRoles())){
+            $user->setRoles(["ROLE_USER"]);
+            $this->addFlash(
+               'success',
+               'Permissons admin enlevé'
+            );
+        } else {
+            $this->addFlash(
+                'success',
+                'Permissons admin ajouté'
+             );
+            $user->setRoles(["ROLE_USER", "ROLE_ADMIN"]);
+        }
+        $em->flush($user);
+
+        return $this->redirectToRoute("showUsers", ["orderBy" => "ASC"]); 
     }
 }

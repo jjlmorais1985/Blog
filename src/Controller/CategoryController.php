@@ -58,6 +58,14 @@ class CategoryController extends AbstractController
 
     public function removeCategory(EntityManagerInterface $em, $categoryId)
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+               'warning',
+               'Accès Refusé - Vous devez etre administrateur pour voir la page demandé'
+            );
+            return $this->render('admin/index.html.twig');
+        }
+
         $category = $em->getRepository(Categories::class)->find($categoryId);
 
         if (empty($category)){
